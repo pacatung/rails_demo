@@ -33,6 +33,10 @@ class EventsController < ApplicationController
     redirect_to :action => :index
   end
 
+  def show
+    @event = Event.find(params[:id])
+
+  end
   private
 
 #  我們新加了一個event_params方法，其中透
