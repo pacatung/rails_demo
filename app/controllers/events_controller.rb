@@ -37,6 +37,22 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
   end
+
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+
+    @event = Event.find(params[:id])
+    @event.update(event_params)
+
+    redirect_to :action => :index, :id =>@event
+  end
+
+
+
+
   private
 
 #  我們新加了一個event_params方法，其中透
