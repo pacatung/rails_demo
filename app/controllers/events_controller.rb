@@ -35,7 +35,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-
+    @page_title = @event.name
   end
 
   def edit
@@ -49,12 +49,12 @@ class EventsController < ApplicationController
     redirect_to :action => :show, :id =>@event
   end
 
-def destroy
+  def destroy
     @event = Event.find(params[:id])
     @event.destroy
 
     redirect_to :action => :index
-end
+  end
 
 
 

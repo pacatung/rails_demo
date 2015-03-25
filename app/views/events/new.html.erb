@@ -8,11 +8,19 @@
 
 
 <%= form_for @event, :url => { :controller => 'events', :action => 'create' } do |f| %>
+
+<% if false%>
+已轉到_form.html.erb
     <%= f.label :name, "Name" %>
     <%= f.text_field :name %>
 
     <%= f.label :description, "Description" %>
     <%= f.text_area :description %>
+<% end%>
+
+
+    <%= render :partial => 'form', :locals => { :f => f } %>
+
 
     <%= f.submit "Create" %>
 <% end %>
