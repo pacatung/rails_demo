@@ -43,13 +43,18 @@ class EventsController < ApplicationController
   end
 
   def update
-
     @event = Event.find(params[:id])
     @event.update(event_params)
 
-    redirect_to :action => :index, :id =>@event
+    redirect_to :action => :show, :id =>@event
   end
 
+def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+
+    redirect_to :action => :index
+end
 
 
 
