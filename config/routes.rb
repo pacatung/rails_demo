@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   resources :people
 
+  resources :events
+
 
   get "welcome/say_hello" => "welcome#say"
   get "welcome" => "welcome#index"
@@ -15,7 +17,8 @@ Rails.application.routes.draw do
 
    # 為了學習方便，實作不會用這種路由
    # 典型路由很容易理解，它會將/foo/bar這樣的網址自動對應到Controller foo的bar Action。我們再下一章中我們會再改用另一種稱作RESTful路由方式。
-   match ':controller(/:action(/:id(.:format)))', :via => :all
+   # 使用RESTfull 後下面可以不用
+   # match ':controller(/:action(/:id(.:format)))', :via => :all
 
 
 

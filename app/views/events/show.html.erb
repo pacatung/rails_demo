@@ -4,7 +4,11 @@
 <%= @event.name %>
 <%= simple_format(@event.description) %>
 
-<p><%= link_to 'Back to index', :controller => 'events', :action => 'index' %></p>
+<!-- <p><%= link_to 'Back to index', :controller => 'events', :action => 'index' %></p> -->
+
+<!-- 不需加 :method => :get , 因 link_to 本身就是 get -->
+<p><%= link_to 'Back to index', events_path %></p>
+
 
 
 

@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
 
+  before_action :set_event, :only =>[:show, :edit, :update, :destroy]
+
   #GET /events/index
   def index
     #Event 是model name
@@ -28,35 +30,54 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.save
 
-    redirect_to :action => :index
+    if @event.save
+      redirect_to :url => events_path, :method=> :get
+    else
+      render :action => :new
+    end
+
+    # redirect_to :action => :index
+    # redirect_to events_path, :method => :get
   end
 
   def show
-    @event = Event.find(params[:id])
+    # 用set_event 代替
+    # @event = Event.find(params[:id])
     @page_title = @event.name
   end
 
   def edit
-    @event = Event.find(params[:id])
+    # 用set_event 代替
+    # @event = Event.find(params[:id])
+    @window_title = @event.name
   end
 
   def update
-    @event = Event.find(params[:id])
+    # 用set_event 代替
+    # @event = Event.find(params[:id])
+
     @event.update(event_params)
 
-    redirect_to :action => :show, :id =>@event
+    if @event.save
+      redirect_to :url => event_path, :method => :get
+    else
+      render :action=> :update
+    end
+
+    # redirect_to :action => :show, :id =>@event
+    redirect_to event_path(@event), :method => :get
+
   end
 
   def destroy
-    @event = Event.find(params[:id])
+    # 用set_event 代替
+    # @event = Event.find(params[:id])
     @event.destroy
 
-    redirect_to :action => :index
+    # redirect_to :action => :index
+    redirect_to events_path, :method => :get
   end
-
-
 
   private
 
@@ -68,6 +89,10 @@ class EventsController < ApplicationController
     params.require(:event).permit(:name, :description)
   end
 
+  def set_event
+    @event= Event.find(params[:id])
+
+  end
 
 
 end

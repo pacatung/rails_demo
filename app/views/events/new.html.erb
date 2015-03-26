@@ -4,10 +4,12 @@
 
 <% if false%>
 這個form_for的程式碼區塊(Code block)被用來建立HTML表單。在區塊中，你可以使用各種函式來建構表單。例如f.text_field :name建立出一個文字輸入框，並填入@event的name屬性資料。但這個表單只能基於這個Model有的屬性(在這個例子是name跟description)。Rails偏好使用form_for而不是讓你手寫表單HTML，這是因為程式碼可以更加簡潔，而且可以明確地連結在Model物件上。
-<%end%>
+<% end%>
 
 
-<%= form_for @event, :url => { :controller => 'events', :action => 'create' } do |f| %>
+<%#= form_for @event, :url => { :controller => 'events', :action => 'create' } do |f| %>
+<%= form_for @event, :url => events_path do |f| %>
+
 
 <% if false%>
 已轉到_form.html.erb

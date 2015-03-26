@@ -1,6 +1,9 @@
 <h2>Edit Events</h2>
 
-<%= form_for @event, :url => { :controller => 'events', :action => 'update', :id => @event } do |f| %>
+<%#= form_for @event, :url => { :controller => 'events', :action => 'update', :id => @event } do |f| %>
+
+<!-- 到create action-->
+<%= form_for @event, :url =>  event_path(@event), :method => :patch  do |f| %>
 
 <% if false%>
 已轉到_form.html.erb
