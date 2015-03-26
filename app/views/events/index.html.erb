@@ -1,4 +1,8 @@
 <h1>Event List</h1>
+
+<!-- 使用gem kaminari -->
+<%= paginate @events %>
+
 <ul>
 <% @events.each do |event| %>
   <li>

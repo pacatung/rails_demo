@@ -5,7 +5,10 @@ class EventsController < ApplicationController
   #GET /events/index
   def index
     #Event 是model name
-    @events = Event.all
+    # @events = Event.all
+
+    # using gem kaminari
+    @events = Event.page(params[:page]).per(2)
   end
 
   def new
@@ -43,37 +46,34 @@ class EventsController < ApplicationController
   end
 
   def show
-    # 用set_event 代替
-    # @event = Event.find(params[:id])
+    # 用set_event 代替 @event = Event.find(params[:id])
     @page_title = @event.name
   end
 
   def edit
-    # 用set_event 代替
-    # @event = Event.find(params[:id])
+    # 用set_event 代替 @event = Event.find(params[:id])
     @window_title = @event.name
   end
 
   def update
-    # 用set_event 代替
-    # @event = Event.find(params[:id])
+    # 用set_event 代替 @event = Event.find(params[:id])
 
     @event.update(event_params)
 
     if @event.save
-      redirect_to :url => event_path, :method => :get
+      redirect_to :url => event_path(@event), :method => :get
     else
       render :action=> :edit
     end
 
     # redirect_to :action => :show, :id =>@event
-    redirect_to event_path(@event), :method => :get
+    # redirect_to event_path(@event), :method => :get
     flash[:notice] = "Successfully updated event"
   end
 
   def destroy
-    # 用set_event 代替
-    # @event = Event.find(params[:id])
+    # 用set_event 代替 @event = Event.find(params[:id])
+
     @event.destroy
 
     # redirect_to :action => :index
@@ -93,8 +93,5 @@ class EventsController < ApplicationController
 
   def set_event
     @event= Event.find(params[:id])
-
   end
-
-
 end
