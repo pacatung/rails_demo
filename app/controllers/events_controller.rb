@@ -39,6 +39,7 @@ class EventsController < ApplicationController
 
     # redirect_to :action => :index
     # redirect_to events_path, :method => :get
+    flash[:notice] = "Successfully created event"
   end
 
   def show
@@ -62,12 +63,12 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to :url => event_path, :method => :get
     else
-      render :action=> :update
+      render :action=> :edit
     end
 
     # redirect_to :action => :show, :id =>@event
     redirect_to event_path(@event), :method => :get
-
+    flash[:notice] = "Successfully updated event"
   end
 
   def destroy
@@ -77,6 +78,7 @@ class EventsController < ApplicationController
 
     # redirect_to :action => :index
     redirect_to events_path, :method => :get
+    flash[:alert] = "Successfully deleted event"
   end
 
   private
