@@ -7,8 +7,9 @@
 <% @events.each do |event| %>
   <li>
   <%= debug (event) %>
+
   <%= event.name %>
-  <%=   event.description %>
+  <%= event.description %>
   <br>
 
   <%#= link_to 'Show', :controller => 'events', :action => 'show', :id => event %>
@@ -19,8 +20,12 @@
   <%= button_to 'Delete', event_path(event), :data => {:confirm => "r u sure?"}, :method => :delete %>
   <br>
   <br>
+
+  <%= link_to 'attendees', event_attendees_path(event) %>
   </li>
-<% end %>
+  <% end %>
+
+
 </ul>
 
 <%#= link_to 'New Event', :controller => 'events', :action => 'new' %>

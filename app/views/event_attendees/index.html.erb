@@ -1,0 +1,20 @@
+<h1>參加者</h1>
+<h2><%= @attendees.name %> </h2>
+<h1><%= debug(@event) %></h1>
+
+<ul>
+
+    <% @attendees.each do |attendee| %>
+    <li>
+      <%= attendee.name %>
+      <%= link_to 'show', event_attendee_path(@event, attendee), :method=> :get %>
+      <%= link_to 'edit', edit_event_attendee_path(@event, attendee), :method=> :get %>
+      <%= link_to 'delete', event_attendee_path(@event, attendee), :method=> :delete %>
+    </li>
+<% end %>
+</ul>
+
+
+<%= link_to 'new attendee', new_event_attendee_path(@event), :method=>:get %>
+<br>
+<%= link_to 'Back To Event index', events_path, :method => :get%>

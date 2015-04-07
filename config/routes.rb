@@ -2,7 +2,11 @@ Rails.application.routes.draw do
 
   resources :people
 
-  resources :events
+  #activerecord
+  resources :events do
+    resources :attendees, :controller => 'event_attendees'
+  end
+
 
 
   get "welcome/say_hello" => "welcome#say"
