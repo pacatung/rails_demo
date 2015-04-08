@@ -88,7 +88,7 @@ class EventsController < ApplicationController
 #  params[:event][:description]。
   def event_params
     #只允許傳進來的值是name 跟 description 的文字,
-    params.require(:event).permit(:name, :description)
+    params.require(:event).permit(:name, :description, :category_id, :location_attributes => [:id, :name, :_destroy], :group_ids => [])
   end
 
   def set_event

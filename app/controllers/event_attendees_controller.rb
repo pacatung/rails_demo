@@ -58,7 +58,7 @@ class EventAttendeesController < ApplicationController
   protected
 
   def find_event
-    @event=Event.find([:event_id])
+    @event=Event.find(params[:event_id])
   end
 
   def attendee_params
