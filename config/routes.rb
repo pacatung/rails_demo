@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   resources :people
 
   #activerecord
@@ -17,7 +18,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # 設定首頁
-   root 'welcome#index'
+   root :to =>'welcome#index'
 
    # 為了學習方便，實作不會用這種路由
    # 典型路由很容易理解，它會將/foo/bar這樣的網址自動對應到Controller foo的bar Action。我們再下一章中我們會再改用另一種稱作RESTful路由方式。

@@ -8,7 +8,7 @@ class Event < ActiveRecord::Base
   # 甚至是串連where條件
   # has_many :attendees, ->{ where(["created_at > ?", Time.now - 7.day]).order("id DESC")
 
-  belongs_to :categroy
+  belongs_to :category
 
   has_many :event_groupship
   has_many :groups, :through => :event_groupship

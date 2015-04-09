@@ -1,20 +1,23 @@
 <h2>show html  event name [<%= @page_title%>]</h2>
 
+<p> Category = <%= @event.category.try(:name) %></p>
 
-<%= @event.name %>
-<%= simple_format(@event.description) %>
 
-<!-- <p><%= link_to 'Back to index', :controller => 'events', :action => 'index' %></p> -->
-
-<p>Group:
+<p>Group =
   <% @event.groups.each do |g| %>
     <%= g.name %>
   <% end %>
 </p>
+<%= @event.name %>
+<%= simple_format(@event.description) %>
+
+<!-- <p><%#= link_to 'Back to index', :controller => 'events', :action => 'index' %></p> -->
+<br>
+<!-- @event.category 可能是 nil，這會導致 nil.name 發生錯誤。一個簡單的方式是改使用 @event.category.try(:name)，另一招則是在 Event model 加入以下程式，就會有 @event.category_name 可以使用，而且允許 @event.category 是 nil -->
+<!-- <p> Category = <%#= @event.category.name %></p> -->
+
 <!-- 不需加 :method => :get , 因 link_to 本身就是 get -->
 <p><%= link_to 'Back to index', events_path %></p>
-
-
 
 
 <% if false %>

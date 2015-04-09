@@ -7,7 +7,7 @@
     <% @attendees.each do |attendee| %>
     <li>
       <%= attendee.name %>
-      <%= link_to 'show', event_attendee_path(@event, attendee), :method=> :get %>
+      <%= link_to 'show', event_attendee_path(@event, attendee), method: :get %>
       <%= link_to 'edit', edit_event_attendee_path(@event, attendee), :method=> :get %>
       <%= link_to 'delete', event_attendee_path(@event, attendee), :method=> :delete %>
     </li>
